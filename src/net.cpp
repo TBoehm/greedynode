@@ -1293,10 +1293,10 @@ void ThreadOpenConnections()
                 OpenNetworkConnection(addr, NULL, strAddr.c_str());
                 for (int i = 0; i < 10 && i < nLoop; i++)
                 {
-                    MilliSleep(500);
+                    MilliSleep(50);
                 }
             }
-            MilliSleep(500);
+            MilliSleep(50);
         }
     }
 
@@ -1306,7 +1306,7 @@ void ThreadOpenConnections()
     {
         ProcessOneShot();
 
-        MilliSleep(500);
+        MilliSleep(50);
 
         CSemaphoreGrant grant(*semOutbound);
         boost::this_thread::interruption_point();
@@ -1398,7 +1398,7 @@ void ThreadOpenAddedConnections()
                 CAddress addr;
                 CSemaphoreGrant grant(*semOutbound);
                 OpenNetworkConnection(addr, &grant, strAddNode.c_str());
-                MilliSleep(500);
+                MilliSleep(50);
             }
             MilliSleep(120000); // Retry every 2 minutes
         }
@@ -1445,7 +1445,7 @@ void ThreadOpenAddedConnections()
         {
             CSemaphoreGrant grant(*semOutbound);
             OpenNetworkConnection(CAddress(vserv[i % vserv.size()]), &grant);
-            MilliSleep(500);
+            MilliSleep(50);
         }
         MilliSleep(120000); // Retry every 2 minutes
     }
